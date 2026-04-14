@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <title>WIRSTICK · Crunchy Stick Snack</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>WIRSTICK · Sosis Bakar Premium | Pesan Online</title>
-  <!-- Google Fonts + Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -15,34 +14,32 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #fff6f0 0%, #ffede3 100%);
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #fff8f0 0%, #ffefe3 100%);
       min-height: 100vh;
       padding: 1.5rem;
-      position: relative;
     }
 
-    /* decorative background elements */
+    /* background stik keren */
     body::before {
-      content: "🍢";
+      content: "🥨";
       font-size: 180px;
       position: fixed;
       bottom: -30px;
       left: -40px;
       opacity: 0.05;
       pointer-events: none;
-      transform: rotate(-10deg);
+      transform: rotate(-15deg);
     }
 
     body::after {
-      content: "🌶️";
-      font-size: 140px;
+      content: "🍟";
+      font-size: 150px;
       position: fixed;
       top: -20px;
       right: -30px;
       opacity: 0.06;
       pointer-events: none;
-      transform: rotate(15deg);
     }
 
     .container {
@@ -55,57 +52,57 @@
       z-index: 2;
     }
 
-    /* MENU SECTION (kiri/kanan tergantung layar) */
+    /* MENU SECTION */
     .menu-section {
       flex: 1.5;
       min-width: 280px;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(4px);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
       border-radius: 48px;
       padding: 1.8rem;
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 200, 170, 0.5);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 180, 120, 0.5);
     }
 
+    /* CART SECTION */
     .cart-section {
       flex: 1;
-      min-width: 280px;
-      background: #ffffffdd;
-      backdrop-filter: blur(8px);
+      min-width: 300px;
+      background: white;
       border-radius: 48px;
       padding: 1.8rem;
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
-      border: 1px solid rgba(255, 220, 190, 0.8);
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+      border: 1px solid #ffddcc;
       height: fit-content;
       position: sticky;
       top: 1.5rem;
     }
 
-    /* header brand */
+    /* HEADER */
     .brand {
       text-align: center;
       margin-bottom: 2rem;
     }
 
-    .brand-icon {
+    .logo-stick {
       background: #e25822;
-      width: 80px;
-      height: 80px;
+      width: 85px;
+      height: 85px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
       box-shadow: 0 12px 20px -8px rgba(226, 88, 34, 0.4);
     }
 
-    .brand-icon i {
-      font-size: 2.8rem;
+    .logo-stick i {
+      font-size: 3rem;
       color: white;
     }
 
     h1 {
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       font-weight: 800;
       background: linear-gradient(135deg, #c23b12, #e87a3e);
       background-clip: text;
@@ -115,21 +112,56 @@
     }
 
     .tagline {
-      font-size: 0.8rem;
-      color: #b85c34;
+      font-size: 0.75rem;
       background: #fff0e6;
       display: inline-block;
-      padding: 0.25rem 1rem;
+      padding: 0.3rem 1rem;
       border-radius: 60px;
+      font-weight: 600;
+      color: #b85c34;
       margin-top: 0.5rem;
     }
 
-    /* menu grid */
+    /* FORM DATA PELANGGAN */
+    .customer-form {
+      background: #fff5ef;
+      padding: 1rem 1.2rem;
+      border-radius: 32px;
+      margin-bottom: 1.8rem;
+    }
+
+    .customer-form h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+      color: #c23b12;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .customer-form input {
+      width: 100%;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      border: 1px solid #ffd5be;
+      border-radius: 60px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: 0.2s;
+      background: white;
+    }
+
+    .customer-form input:focus {
+      border-color: #e25822;
+      box-shadow: 0 0 0 2px rgba(226, 88, 34, 0.2);
+    }
+
+    /* MENU GRID */
     .menu-grid {
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
-      margin-top: 1rem;
+      gap: 1rem;
     }
 
     .menu-card {
@@ -138,16 +170,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.8rem 1.2rem;
-      transition: all 0.2s ease;
+      padding: 0.9rem 1.2rem;
+      transition: all 0.25s ease;
       border: 1px solid #ffe0d0;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
 
     .menu-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 18px 28px -12px rgba(194, 59, 18, 0.2);
-      border-color: #ffc2a1;
+      box-shadow: 0 15px 25px -10px rgba(194, 59, 18, 0.2);
+      border-color: #ffbf9a;
     }
 
     .menu-info {
@@ -157,135 +189,164 @@
     }
 
     .menu-icon {
-      width: 60px;
-      height: 60px;
+      width: 55px;
+      height: 55px;
       background: #fff2ea;
       border-radius: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.9rem;
+      font-size: 1.8rem;
     }
 
     .menu-text h3 {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: #2c1a10;
     }
 
     .menu-text p {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: #c26a42;
-      font-weight: 500;
-      margin-top: 4px;
-    }
-
-    .price-order {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      font-weight: 600;
+      margin-top: 3px;
     }
 
     .price {
       font-weight: 800;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       color: #2c1a10;
       background: #f7ede5;
       padding: 0.3rem 0.9rem;
       border-radius: 40px;
+      margin-right: 0.8rem;
     }
 
-    .btn-order {
+    .btn-tambah {
       background: #e25822;
       border: none;
-      padding: 0.5rem 1.2rem;
+      padding: 0.45rem 1rem;
       border-radius: 40px;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: white;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       cursor: pointer;
       transition: 0.15s;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Quicksand', sans-serif;
     }
 
-    .btn-order:hover {
+    .btn-tambah:hover {
       background: #bc431b;
-      transform: scale(0.97);
+      transform: scale(0.96);
     }
 
-    /* cart styling */
+    /* CART STYLE */
     .cart-header {
       display: flex;
       align-items: center;
       gap: 10px;
       border-bottom: 2px dashed #ffd5be;
       padding-bottom: 1rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .cart-header i {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: #e25822;
     }
 
     .cart-header h2 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: #2c1a10;
     }
 
     .cart-list {
       list-style: none;
-      margin-bottom: 1rem;
       max-height: 320px;
       overflow-y: auto;
+      margin-bottom: 1rem;
     }
 
-    .cart-list li {
+    .cart-item {
       background: #fffaf5;
-      margin: 0.5rem 0;
-      padding: 0.7rem 1rem;
-      border-radius: 28px;
+      margin: 0.6rem 0;
+      padding: 0.7rem;
+      border-radius: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-weight: 500;
-      font-size: 0.9rem;
+      flex-wrap: wrap;
+      gap: 8px;
       border: 1px solid #ffe2d4;
     }
 
-    .cart-item-name {
+    .item-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .item-controls {
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .remove-item {
-      background: none;
+    .item-controls button {
+      background: #f0e1d6;
       border: none;
-      color: #d94a1a;
-      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-weight: bold;
       font-size: 1rem;
-      padding: 0 6px;
+      cursor: pointer;
       transition: 0.1s;
+      color: #c23b12;
     }
 
-    .remove-item:hover {
-      transform: scale(1.1);
-      color: #a8320a;
+    .item-controls button:hover {
+      background: #e25822;
+      color: white;
     }
 
-    .total-price {
+    .item-qty {
+      font-weight: 700;
+      min-width: 25px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .item-subtotal {
+      font-weight: 700;
+      color: #c23b12;
+      background: #ffefe5;
+      padding: 0.2rem 0.7rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: #bb8264;
+      padding: 1.5rem;
+      font-weight: 500;
+    }
+
+    .total-box {
       background: #2c1a10;
       color: #ffefdf;
       padding: 0.9rem;
       border-radius: 60px;
       text-align: center;
       font-weight: 800;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin: 1rem 0;
     }
 
@@ -293,10 +354,10 @@
       background: #25D366;
       width: 100%;
       border: none;
-      padding: 1rem;
+      padding: 0.9rem;
       border-radius: 60px;
       font-weight: 800;
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: white;
       display: flex;
       align-items: center;
@@ -304,20 +365,12 @@
       gap: 10px;
       cursor: pointer;
       transition: 0.15s;
-      font-family: 'Inter', sans-serif;
-      margin-top: 0.5rem;
+      font-family: 'Quicksand', sans-serif;
     }
 
     .btn-wa:hover {
       background: #1da15a;
       transform: scale(0.98);
-    }
-
-    .empty-cart {
-      text-align: center;
-      color: #bb8264;
-      padding: 2rem 0;
-      font-weight: 500;
     }
 
     .reset-btn {
@@ -331,24 +384,23 @@
       color: #b85c34;
       cursor: pointer;
       transition: 0.1s;
+      font-family: 'Quicksand', sans-serif;
     }
 
     .reset-btn:hover {
       background: #ffefe5;
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 800px) {
       .container {
         flex-direction: column;
       }
       .cart-section {
         position: static;
       }
-      body {
-        padding: 1rem;
-      }
-      .menu-text h3 {
-        font-size: 1.2rem;
+      .menu-card {
+        flex-wrap: wrap;
+        gap: 10px;
       }
     }
   </style>
@@ -356,92 +408,106 @@
 <body>
 
 <div class="container">
-  <!-- MENU SECTION (WIRSTICK original menu: BALADO, KEJU, BBQ) -->
+  <!-- MENU SECTION -->
   <div class="menu-section">
     <div class="brand">
-      <div class="brand-icon">
-        <i class="fas fa-grill-hot"></i>
+      <div class="logo-stick">
+        <i class="fas fa-utensils"></i>
       </div>
       <h1>WIRSTICK</h1>
       <div class="tagline">
-        <i class="fas fa-fire"></i> sosis bakar premium • pedas, cheese, smoky
+        <i class="fas fa-cookie-bite"></i> Crunchy Stick Snack
       </div>
     </div>
 
+    <!-- Data Pelanggan -->
+    <div class="customer-form">
+      <h3><i class="fas fa-user"></i> Data Pemesan</h3>
+      <input type="text" id="namaPelanggan" placeholder="📝 Nama kamu" autocomplete="off">
+      <input type="text" id="nomorMeja" placeholder="🔢 Nomor Meja / Kode Pesanan" autocomplete="off">
+    </div>
+
+    <!-- DAFTAR MENU WIRSTICK (makanan ringan stik kering) -->
     <div class="menu-grid">
       <!-- WIRSTICK BALADO -->
-      <div class="menu-card" data-nama="WIRSTICK BALADO" data-harga="15000">
+      <div class="menu-card">
         <div class="menu-info">
           <div class="menu-icon">
             <i class="fas fa-pepper-hot"></i>
           </div>
           <div class="menu-text">
             <h3>WIRSTICK BALADO</h3>
-            <p><i class="fas fa-chili"></i> spicy balado glaze + sosis juicy</p>
+            <p><i class="fas fa-fire"></i> Pedas gurih, kriuk renyah</p>
           </div>
         </div>
-        <div class="price-order">
-          <span class="price">Rp15k</span>
-          <button class="btn-order"><i class="fas fa-plus-circle"></i> Pesan</button>
+        <div style="display: flex; align-items: center;">
+          <span class="price">Rp15.000</span>
+          <button class="btn-tambah" onclick="tambah('WIRSTICK BALADO', 15000)">
+            <i class="fas fa-plus-circle"></i> Tambah
+          </button>
         </div>
       </div>
 
       <!-- WIRSTICK KEJU -->
-      <div class="menu-card" data-nama="WIRSTICK KEJU" data-harga="15000">
+      <div class="menu-card">
         <div class="menu-info">
           <div class="menu-icon">
             <i class="fas fa-cheese"></i>
           </div>
           <div class="menu-text">
             <h3>WIRSTICK KEJU</h3>
-            <p><i class="fas fa-melt"></i> melted cheddar + mozzarella</p>
+            <p><i class="fas fa-star"></i> Cheddar creamy, crispy</p>
           </div>
         </div>
-        <div class="price-order">
-          <span class="price">Rp15k</span>
-          <button class="btn-order"><i class="fas fa-plus-circle"></i> Pesan</button>
+        <div style="display: flex; align-items: center;">
+          <span class="price">Rp15.000</span>
+          <button class="btn-tambah" onclick="tambah('WIRSTICK KEJU', 15000)">
+            <i class="fas fa-plus-circle"></i> Tambah
+          </button>
         </div>
       </div>
 
       <!-- WIRSTICK BBQ -->
-      <div class="menu-card" data-nama="WIRSTICK BBQ" data-harga="15000">
+      <div class="menu-card">
         <div class="menu-info">
           <div class="menu-icon">
             <i class="fas fa-drumstick-bite"></i>
           </div>
           <div class="menu-text">
             <h3>WIRSTICK BBQ</h3>
-            <p><i class="fas fa-smog"></i> smoky BBQ sauce & caramelized</p>
+            <p><i class="fas fa-smog"></i> Smoky manis, gurih</p>
           </div>
         </div>
-        <div class="price-order">
-          <span class="price">Rp15k</span>
-          <button class="btn-order"><i class="fas fa-plus-circle"></i> Pesan</button>
+        <div style="display: flex; align-items: center;">
+          <span class="price">Rp15.000</span>
+          <button class="btn-tambah" onclick="tambah('WIRSTICK BBQ', 15000)">
+            <i class="fas fa-plus-circle"></i> Tambah
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- little info promo -->
-    <div style="margin-top: 1.8rem; text-align: center; font-size: 0.7rem; background:#fff1e8; border-radius: 30px; padding: 0.6rem;">
-      <i class="fas fa-gift"></i> Beli 3 dapat free saus spesial + stiker WIRSTICK!
+    <!-- promo kecil -->
+    <div style="margin-top: 1.5rem; text-align: center; font-size: 0.7rem; background:#fff1e8; border-radius: 30px; padding: 0.7rem;">
+      <i class="fas fa-gift"></i> Beli 3 stik = Gratis 1 stik rasa pilihan!
     </div>
   </div>
 
-  <!-- CART SECTION (keranjang & total) -->
+  <!-- CART SECTION -->
   <div class="cart-section">
     <div class="cart-header">
       <i class="fas fa-shopping-basket"></i>
-      <h2>🛒 Pesanan Kamu</h2>
+      <h2>🛒 Keranjang</h2>
     </div>
 
     <ul id="cartList" class="cart-list">
-      <li class="empty-cart"><i class="fas fa-utensils"></i> Belum ada pesanan</li>
+      <li class="empty-cart"><i class="fas fa-box-open"></i> Keranjang masih kosong</li>
     </ul>
 
-    <div id="totalContainer" class="total-price">Total: Rp 0</div>
+    <div id="totalContainer" class="total-box">Total: Rp 0</div>
 
     <button id="waButton" class="btn-wa">
-      <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+      <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
     </button>
     <button id="resetButton" class="reset-btn">
       <i class="fas fa-trash-alt"></i> Kosongkan Keranjang
@@ -450,166 +516,137 @@
 </div>
 
 <script>
-  // Data pesanan array of objects { nama, harga }
-  let cart = [];
+  // KERANJANG dengan format { "nama_item": { harga: number, qty: number } }
+  let keranjang = {};
 
-  // DOM elements
-  const cartListEl = document.getElementById('cartList');
-  const totalContainer = document.getElementById('totalContainer');
-  const waButton = document.getElementById('waButton');
-  const resetButton = document.getElementById('resetButton');
-
-  // Helper: format Rupiah (tanpa desimal)
-  function formatRupiah(angka) {
-    return 'Rp ' + angka.toLocaleString('id-ID');
+  // Fungsi TAMBAH item
+  function tambah(nama, harga) {
+    if (!keranjang[nama]) {
+      keranjang[nama] = { harga: harga, qty: 0 };
+    }
+    keranjang[nama].qty++;
+    render();
   }
 
-  // Render ulang keranjang dan total
-  function renderCart() {
-    cartListEl.innerHTML = '';
-    if (cart.length === 0) {
-      cartListEl.innerHTML = '<li class="empty-cart"><i class="fas fa-utensils"></i> Belum ada pesanan</li>';
-      totalContainer.innerText = 'Total: Rp 0';
-      return;
+  // Fungsi KURANG item
+  function kurang(nama) {
+    if (keranjang[nama]) {
+      keranjang[nama].qty--;
+      if (keranjang[nama].qty <= 0) {
+        delete keranjang[nama];
+      }
     }
+    render();
+  }
 
+  // RENDER ulang tampilan keranjang
+  function render() {
+    const cartList = document.getElementById("cartList");
+    const totalContainer = document.getElementById("totalContainer");
+    
+    if (!cartList) return;
+    
+    cartList.innerHTML = "";
     let total = 0;
-    cart.forEach((item, index) => {
-      total += item.harga;
-      const li = document.createElement('li');
-      li.className = 'cart-item';
+
+    for (let item in keranjang) {
+      const data = keranjang[item];
+      const subtotal = data.harga * data.qty;
+      total += subtotal;
+
+      const li = document.createElement("li");
+      li.className = "cart-item";
+      const safeNama = item.replace(/'/g, "\\'");
+      
       li.innerHTML = `
-        <div class="cart-item-name">
-          <i class="fas fa-hotdog"></i>
-          <span>${item.nama}</span>
+        <div class="item-name">
+          <i class="fas fa-cookie"></i>
+          <span><strong>${item}</strong></span>
         </div>
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span style="font-weight:700;">${formatRupiah(item.harga)}</span>
-          <button class="remove-item" data-index="${index}"><i class="fas fa-times-circle"></i></button>
+        <div class="item-controls">
+          <button onclick="tambah('${safeNama}', ${data.harga})">+</button>
+          <span class="item-qty">${data.qty}</span>
+          <button onclick="kurang('${safeNama}')">-</button>
+          <span class="item-subtotal">Rp ${subtotal.toLocaleString('id-ID')}</span>
         </div>
       `;
-      cartListEl.appendChild(li);
-    });
-
-    totalContainer.innerText = `Total: ${formatRupiah(total)}`;
-
-    // attach event ke tombol hapus (masing-masing)
-    document.querySelectorAll('.remove-item').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const idx = parseInt(btn.getAttribute('data-index'));
-        if (!isNaN(idx)) {
-          cart.splice(idx, 1);
-          renderCart();
-        }
-        e.stopPropagation();
-      });
-    });
-  }
-
-  // fungsi pesan (tambah ke keranjang)
-  function tambahPesanan(nama, harga) {
-    cart.push({ nama: nama, harga: harga });
-    renderCart();
-
-    // animasi kecil: efek notifikasi singkat (opsional)
-    const toast = document.createElement('div');
-    toast.innerText = `🍢 ${nama} ditambahkan!`;
-    toast.style.position = 'fixed';
-    toast.style.bottom = '20px';
-    toast.style.left = '50%';
-    toast.style.transform = 'translateX(-50%)';
-    toast.style.backgroundColor = '#2c1a10';
-    toast.style.color = '#ffefdf';
-    toast.style.padding = '0.6rem 1.2rem';
-    toast.style.borderRadius = '60px';
-    toast.style.fontWeight = '600';
-    toast.style.fontSize = '0.85rem';
-    toast.style.zIndex = '999';
-    toast.style.boxShadow = '0 8px 18px rgba(0,0,0,0.2)';
-    toast.style.backdropFilter = 'blur(8px)';
-    toast.style.fontFamily = "'Inter', sans-serif";
-    document.body.appendChild(toast);
-    setTimeout(() => {
-      toast.remove();
-    }, 1500);
-  }
-
-  // event listener untuk semua tombol "Pesan" di menu card
-  const orderBtns = document.querySelectorAll('.btn-order');
-  orderBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      const card = btn.closest('.menu-card');
-      if (card) {
-        const nama = card.getAttribute('data-nama');
-        const harga = parseInt(card.getAttribute('data-harga'));
-        if (nama && !isNaN(harga)) {
-          tambahPesanan(nama, harga);
-        }
-      }
-      e.stopPropagation();
-    });
-  });
-
-  // Fungsi kirim WA (sesuai template modern dengan detail pesanan)
-  function kirimWhatsApp() {
-    if (cart.length === 0) {
-      alert('⚠️ Belum ada pesanan! Pilih menu WIRSTICK dulu ya 🍢');
-      return;
+      cartList.appendChild(li);
     }
 
-    // nomor WhatsApp penjual (bisa diganti dengan nomor asli)
-    // GANTI NOMOR DI BAWAH INI DENGAN NOMOR WHATSAPP ASLI PENJUAL WIRSTICK
-    let nomorToko = "6282194189613"; // <=== GANTI DENGAN NOMOR AKTIF KAMU
+    if (Object.keys(keranjang).length === 0) {
+      cartList.innerHTML = '<li class="empty-cart"><i class="fas fa-box-open"></i> Keranjang masih kosong</li>';
+      totalContainer.innerText = "Total: Rp 0";
+    } else {
+      totalContainer.innerText = `Total: Rp ${total.toLocaleString('id-ID')}`;
+    }
+  }
+
+  // KIRIM VIA WHATSAPP
+  function kirimWA() {
+    let nomorToko = "6282194189613"; // GANTI DENGAN NOMOR WHATSAPP ASLI PENJUAL
     
-    let totalHarga = 0;
-    cart.forEach(item => { totalHarga += item.harga; });
+    let nama = document.getElementById("namaPelanggan").value.trim();
+    let meja = document.getElementById("nomorMeja").value.trim();
     
-    // menyusun teks dengan rapi
-    let text = "🍢 *PESANAN WIRSTICK* 🍢%0A";
-    text += "Halo kak, saya mau pesan:%0A%0A";
+    if (nama === "" || meja === "") {
+      alert("⚠️ Isi nama dan nomor meja/kode pesanan dulu ya!");
+      return;
+    }
     
-    cart.forEach((item, i) => {
-      text += (i+1) + ". " + item.nama + " - Rp " + item.harga.toLocaleString('id-ID') + "%0A";
-    });
+    if (Object.keys(keranjang).length === 0) {
+      alert("⚠️ Keranjang masih kosong! Pilih menu WIRSTICK dulu 🥨");
+      return;
+    }
     
-    text += "%0A📋 *Total: Rp " + totalHarga.toLocaleString('id-ID') + "*%0A%0A";
-    text += "🙏 siap antar / ambil di tempat. Terima kasih!%0A";
-    text += "— dari menu digital WIRSTICK";
+    let text = "🍟 *WIRSTICK ORDER* 🍟%0A%0A";
+    text += "👤 Nama: " + nama + "%0A";
+    text += "🪑 Meja/Kode: " + meja + "%0A%0A";
+    text += "📋 *Pesanan:*%0A";
     
-    const url = "https://wa.me/" + nomorToko + "?text=" + text;
+    let total = 0;
+    
+    for (let item in keranjang) {
+      let data = keranjang[item];
+      let subtotal = data.harga * data.qty;
+      total += subtotal;
+      text += `🥨 ${item} x${data.qty} = Rp ${subtotal.toLocaleString('id-ID')}%0A`;
+    }
+    
+    text += `%0A💰 *Total: Rp ${total.toLocaleString('id-ID')}*%0A%0A`;
+    text += "🙏 Terima kasih! Siap antar/jemput.";
+    
+    let url = "https://wa.me/" + nomorToko + "?text=" + text;
     window.open(url, "_blank");
   }
 
-  // tombol WA
-  waButton.addEventListener('click', kirimWhatsApp);
-
-  // reset / kosongkan keranjang
-  resetButton.addEventListener('click', () => {
-    if (cart.length > 0) {
-      cart = [];
-      renderCart();
-      // notifikasi reset
-      const notif = document.createElement('div');
-      notif.innerText = '🗑️ Keranjang dikosongkan';
+  // Event listeners
+  document.getElementById("waButton")?.addEventListener("click", kirimWA);
+  document.getElementById("resetButton")?.addEventListener("click", () => {
+    if (Object.keys(keranjang).length > 0) {
+      keranjang = {};
+      render();
+      let notif = document.createElement('div');
+      notif.innerText = '🧹 Keranjang dikosongkan';
       notif.style.position = 'fixed';
       notif.style.bottom = '20px';
       notif.style.left = '50%';
       notif.style.transform = 'translateX(-50%)';
-      notif.style.backgroundColor = '#1e1a17';
-      notif.style.color = '#ffdcc9';
+      notif.style.backgroundColor = '#2c1a10';
+      notif.style.color = '#ffefdf';
       notif.style.padding = '0.5rem 1.2rem';
       notif.style.borderRadius = '60px';
       notif.style.fontSize = '0.8rem';
       notif.style.zIndex = '999';
       document.body.appendChild(notif);
-      setTimeout(() => notif.remove(), 1200);
+      setTimeout(() => notif.remove(), 1500);
     } else {
-      alert('Keranjang masih kosong nih, pilih menu dulu yuk!');
+      alert("Keranjang sudah kosong!");
     }
   });
 
-  // Initial render (cart kosong)
-  renderCart();
+  // Initial render
+  render();
 </script>
+
 </body>
 </html>
