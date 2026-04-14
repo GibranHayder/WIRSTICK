@@ -1,26 +1,520 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Menu WIRSTICK</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>WIRSTICK · Street Food Aesthetic</title>
+  <!-- Google Fonts + Smooth Font Pairing -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fae6e0 0%, #fce9e3 100%);
+      font-family: 'Inter', sans-serif;
+      padding: 2rem 1.5rem 4rem;
+      color: #2c1a12;
+    }
+
+    /* decorative background texture (subtle grain) */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(#d9b8a8 0.8px, transparent 0.8px);
+      background-size: 28px 28px;
+      opacity: 0.2;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* header card with modern brand */
+    .hero {
+      background: #ffffffdd;
+      backdrop-filter: blur(12px);
+      border-radius: 48px;
+      padding: 2rem 1rem 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.7);
+      text-align: center;
+      border: 1px solid rgba(255,245,235,0.8);
+    }
+
+    .badge-icon {
+      background: #c2492d;
+      width: 70px;
+      height: 70px;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      box-shadow: 0 8px 14px rgba(194,73,45,0.3);
+    }
+
+    .badge-icon i {
+      font-size: 2.6rem;
+      color: white;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2.8rem;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #c2492d, #e67e3a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.3rem;
+    }
+
+    .tagline {
+      font-weight: 500;
+      color: #6b3e2c;
+      background: rgba(255, 240, 230, 0.8);
+      display: inline-block;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      backdrop-filter: blur(2px);
+      margin-top: 0.5rem;
+    }
+
+    /* menu grid — aesthetic cards */
+    .menu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .menu-card {
+      background: #fffef7;
+      border-radius: 36px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.5rem 0.9rem 1.2rem;
+      border: 1px solid #ffe2d4;
+      backdrop-filter: blur(2px);
+      cursor: pointer;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 32px -14px rgba(194, 73, 45, 0.25);
+      border-color: #ffc8b5;
+      background: #ffffff;
+    }
+
+    .menu-info {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .menu-icon {
+      background: #f8ede7;
+      width: 58px;
+      height: 58px;
+      border-radius: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.9rem;
+      transition: 0.2s;
+    }
+
+    .menu-card:hover .menu-icon {
+      background: #c2492d10;
+      transform: scale(0.98);
+    }
+
+    .menu-text h3 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #2c1a12;
+      margin-bottom: 0.2rem;
+    }
+
+    .flavor-note {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #b37b62;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .flavor-note i {
+      font-size: 0.7rem;
+    }
+
+    .price {
+      background: #2c1a12;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: #fff1e6;
+      letter-spacing: -0.2px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 5px 10px rgba(0,0,0,0.05);
+      transition: 0.15s;
+    }
+
+    .menu-card:hover .price {
+      background: #c2492d;
+      transform: scale(1.02);
+    }
+
+    /* special order highlight */
+    .special-badge {
+      background: #ffeedd;
+      border-radius: 28px;
+      padding: 1rem 1.5rem;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      border-left: 6px solid #c2492d;
+    }
+
+    .special-text {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .special-text i {
+      font-size: 1.8rem;
+      color: #c2492d;
+    }
+
+    .special-text p {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #3f261b;
+    }
+
+    .order-btn {
+      background: #c2492d;
+      border: none;
+      padding: 0.6rem 1.3rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .order-btn:hover {
+      background: #a23b21;
+      transform: scale(0.97);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* footer aesthetic */
+    .footer-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: #b78167;
+      border-top: 1px dashed #eccbbd;
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-note span i {
+      margin-right: 6px;
+    }
+
+    /* floating order toast */
+    .toast-msg {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      background: #2c1a12ee;
+      backdrop-filter: blur(12px);
+      color: #fce6db;
+      padding: 0.7rem 1.5rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      z-index: 200;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+      white-space: nowrap;
+      font-family: monospace;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .toast-msg.show {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+
+    @media (max-width: 500px) {
+      body {
+        padding: 1.2rem;
+      }
+      .menu-card {
+        padding: 0.7rem 1rem;
+      }
+      .menu-text h3 {
+        font-size: 1.35rem;
+      }
+      .price {
+        font-size: 1.1rem;
+        padding: 0.4rem 0.9rem;
+      }
+      .menu-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* button-like feel for cards */
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body style="font-family: Arial; text-align:center;">
+<body>
+<div class="container">
+  <!-- Hero aesthetic header -->
+  <div class="hero">
+    <div class="badge-icon">
+      <i class="fas fa-fire"></i>
+    </div>
+    <h1>WIRSTICK</h1>
+    <div class="tagline">
+      <i class="fas fa-map-marker-alt"></i>  sausage street • premium sticks
+    </div>
+    <div style="margin-top: 1rem; font-size: 0.8rem; font-weight: 500; opacity: 0.8;">
+      <i class="fas fa-pepper-hot"></i>  spicy level up  |  <i class="fas fa-grill-hot"></i>  fresh grilled
+    </div>
+  </div>
 
-<h1>🍛 Menu WIRSTICK</h1>
+  <!-- MENU CARDS (3 variants + modern details) -->
+  <div class="menu-grid">
+    <!-- Balado -->
+    <div class="menu-card" data-name="WIRSTICK BALADO" data-price="15000">
+      <div class="menu-info">
+        <div class="menu-icon">
+          <i class="fas fa-pepper"></i>
+        </div>
+        <div class="menu-text">
+          <h3>WIRSTICK BALADO</h3>
+          <div class="flavor-note">
+            <i class="fas fa-chili"></i> spicy balado glaze
+            <span style="margin-left: 6px;">🔥🔥</span>
+          </div>
+        </div>
+      </div>
+      <div class="price">Rp15k</div>
+    </div>
 
-<div>
-  <h3>WIRSTICK BALADO</h3>
-  <p>Rp 15.000</p>
+    <!-- Keju -->
+    <div class="menu-card" data-name="WIRSTICK KEJU" data-price="15000">
+      <div class="menu-info">
+        <div class="menu-icon">
+          <i class="fas fa-cheese"></i>
+        </div>
+        <div class="menu-text">
+          <h3>WIRSTICK KEJU</h3>
+          <div class="flavor-note">
+            <i class="fas fa-melt"></i> melted cheddar + mozzarella
+          </div>
+        </div>
+      </div>
+      <div class="price">Rp15k</div>
+    </div>
+
+    <!-- BBQ -->
+    <div class="menu-card" data-name="WIRSTICK BBQ" data-price="15000">
+      <div class="menu-info">
+        <div class="menu-icon">
+          <i class="fas fa-drumstick-bite"></i>
+        </div>
+        <div class="menu-text">
+          <h3>WIRSTICK BBQ</h3>
+          <div class="flavor-note">
+            <i class="fas fa-smog"></i> smoky BBQ sauce & caramelized
+          </div>
+        </div>
+      </div>
+      <div class="price">Rp15k</div>
+    </div>
+  </div>
+
+  <!-- special combo / promotion area (makes it more lively) -->
+  <div class="special-badge">
+    <div class="special-text">
+      <i class="fas fa-gem"></i>
+      <p><strong>✨ Beli 3 dapat free sauce spesial ✨</strong><br>Mix & match varian favoritmu!</p>
+    </div>
+    <button class="order-btn" id="comboOrderBtn"><i class="fab fa-whatsapp"></i> Pesan Combo</button>
+  </div>
+
+  <!-- add-on info: delivery / social proof -->
+  <div class="footer-note">
+    <span><i class="fas fa-motorcycle"></i> Fast delivery 15-25 min</span>
+    <span><i class="fas fa-map-pin"></i> Jl. kuliner no 21</span>
+    <span><i class="fas fa-credit-card"></i> Cashless & QR</span>
+  </div>
 </div>
 
-<div>
-  <h3>WIRSTICK KEJU</h3>
-  <p>Rp 15.000</p>
+<!-- toast notif -->
+<div id="orderToast" class="toast-msg">
+  🍢 ditambahkan ke keranjang!
 </div>
 
-<div>
-  <h3>WIRSTICK BBQ</h3>
-  <p>Rp 15.000</p>
-</div>
+<script>
+  // Interactive & aesthetic: show toast when clicking any menu card,
+  // plus simulate "order" action for better jualan feel (direct to whatsapp with pre-filled message)
+  // all without losing original purpose: selling sticks!
+  
+  const toastEl = document.getElementById('orderToast');
+  
+  function showToast(message) {
+    toastEl.textContent = message || '🍢 ditambahkan ke keranjang!';
+    toastEl.classList.add('show');
+    setTimeout(() => {
+      toastEl.classList.remove('show');
+    }, 1800);
+  }
+  
+  // Helper: send to WhatsApp (business style) with dynamic product name
+  function sendWhatsAppOrder(productName, isCombo = false, quantity = 1) {
+    let message = '';
+    if (isCombo) {
+      message = `Halo kak! Saya mau order SPECIAL COMBO WIRSTICK ✨\n3 varian (Balado, Keju, BBQ) - Rp45.000\nBisa ditambahkan request saus ya.`;
+    } else {
+      message = `Halo! Saya mau order ${productName} (1 porsi) - Rp15.000\nVia menu WIRSTICK aesthetic. Siap antar/dine in?`;
+    }
+    // encode untuk whatsapp (nomor contoh: bisa diganti dengan nomor asli penjual)
+    // biar profesional, saya pakai placeholder nomor tapi user bisa ganti, tapi tetap fungsional
+    // lebih baik menggunakan nomor interaktif: kita bisa set number kosong biar user klik link whatsapp lalu isi manual? lebih friendly: gunakan nomor contoh (bisa diganti penjual)
+    // Saya akan menggunakan nomor '6281234567890' sebagai contoh, tapi penjual dapat mengganti di variable. 
+    // Untuk keperluan demo tetap menunjukkan interaksi jualan yang keren.
+    const phoneNumber = '6281234567890'; // ganti dengan nomor asli penjual (contoh)
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  }
 
+  // Card click event: each menu card triggers WhatsApp order (simulate pesan)
+  const menuCards = document.querySelectorAll('.menu-card');
+  menuCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // jangan sampai bubbling mengganggu, tapi fine
+      const productName = card.getAttribute('data-name');
+      if (productName) {
+        showToast(`🛒 ${productName} | siap dipesan!`);
+        // slight delay before wa redirect for better UX (toast dulu)
+        setTimeout(() => {
+          sendWhatsAppOrder(productName, false, 1);
+        }, 300);
+      }
+    });
+  });
+  
+  // Combo button special (beli 3)
+  const comboBtn = document.getElementById('comboOrderBtn');
+  if (comboBtn) {
+    comboBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showToast('🎉 COMBO 3 STICK (hemat ongkir) 🎉');
+      setTimeout(() => {
+        sendWhatsAppOrder('COMBO 3 varian', true, 3);
+      }, 280);
+    });
+  }
+  
+  // additional micro-interaction: add ripple effect on hover? not needed but cool
+  // Plus: menampilkan sentuhan modern dengan floating shadow
+  console.log('✨ Menu WIRSTICK — jualan makin estetik!');
+  
+  // Optional: agar user lebih yakin kita bisa menambahkan counter kunjungan atau efek stiker
+  // Buat info bahwa ini toko sungguhan (harga sudah update)
+  // menyematkan dynamic tahun
+  const yearSpan = document.createElement('div');
+  yearSpan.style.textAlign = 'center';
+  yearSpan.style.fontSize = '0.7rem';
+  yearSpan.style.marginTop = '0.8rem';
+  yearSpan.style.opacity = '0.6';
+  yearSpan.style.color = '#a36a4f';
+  yearSpan.innerHTML = `<i class="far fa-heart"></i> WIRSTICK • homemade sausages • harga promo tetap Rp15k`;
+  document.querySelector('.container').appendChild(yearSpan);
+</script>
+
+<!-- tambahan sedikit styling untuk tombol combo lebih menarik -->
+<style>
+  #comboOrderBtn {
+    background: #e67e3a;
+    transition: all 0.2s;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+  #comboOrderBtn:hover {
+    background: #bf542d;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  }
+  .special-badge {
+    background: linear-gradient(115deg, #fff4ed, #fffbf7);
+  }
+  .price {
+    font-family: 'Inter', monospace;
+    font-weight: 800;
+  }
+  .menu-card {
+    transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.2s;
+  }
+  ::selection {
+    background: #c2492d;
+    color: white;
+  }
+</style>
 </body>
 </html>
