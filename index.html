@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>WIRSTICK · Street Food Aesthetic</title>
-  <!-- Google Fonts + Smooth Font Pairing -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (free icons) -->
+  <title>WIRSTICK · Sosis Bakar Premium | Pesan Online</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -16,505 +15,601 @@
     }
 
     body {
-      background: linear-gradient(145deg, #fae6e0 0%, #fce9e3 100%);
       font-family: 'Inter', sans-serif;
-      padding: 2rem 1.5rem 4rem;
-      color: #2c1a12;
+      background: linear-gradient(135deg, #fff6f0 0%, #ffede3 100%);
+      min-height: 100vh;
+      padding: 1.5rem;
+      position: relative;
     }
 
-    /* decorative background texture (subtle grain) */
+    /* decorative background elements */
     body::before {
-      content: "";
+      content: "🍢";
+      font-size: 180px;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(#d9b8a8 0.8px, transparent 0.8px);
-      background-size: 28px 28px;
-      opacity: 0.2;
+      bottom: -30px;
+      left: -40px;
+      opacity: 0.05;
       pointer-events: none;
-      z-index: 0;
+      transform: rotate(-10deg);
+    }
+
+    body::after {
+      content: "🌶️";
+      font-size: 140px;
+      position: fixed;
+      top: -20px;
+      right: -30px;
+      opacity: 0.06;
+      pointer-events: none;
+      transform: rotate(15deg);
     }
 
     .container {
-      max-width: 500px;
+      max-width: 1300px;
       margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
       position: relative;
       z-index: 2;
     }
 
-    /* header card with modern brand */
-    .hero {
-      background: #ffffffdd;
-      backdrop-filter: blur(12px);
+    /* MENU SECTION (kiri/kanan tergantung layar) */
+    .menu-section {
+      flex: 1.5;
+      min-width: 280px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(4px);
       border-radius: 48px;
-      padding: 2rem 1rem 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.7);
-      text-align: center;
-      border: 1px solid rgba(255,245,235,0.8);
+      padding: 1.8rem;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 200, 170, 0.5);
     }
 
-    .badge-icon {
-      background: #c2492d;
-      width: 70px;
-      height: 70px;
-      border-radius: 100px;
+    .cart-section {
+      flex: 1;
+      min-width: 280px;
+      background: #ffffffdd;
+      backdrop-filter: blur(8px);
+      border-radius: 48px;
+      padding: 1.8rem;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(255, 220, 190, 0.8);
+      height: fit-content;
+      position: sticky;
+      top: 1.5rem;
+    }
+
+    /* header brand */
+    .brand {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .brand-icon {
+      background: #e25822;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1rem;
-      box-shadow: 0 8px 14px rgba(194,73,45,0.3);
+      margin-bottom: 0.8rem;
+      box-shadow: 0 12px 20px -8px rgba(226, 88, 34, 0.4);
     }
 
-    .badge-icon i {
-      font-size: 2.6rem;
+    .brand-icon i {
+      font-size: 2.8rem;
       color: white;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
     }
 
     h1 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 2.8rem;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #c2492d, #e67e3a);
+      font-size: 2.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #c23b12, #e87a3e);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      margin-bottom: 0.3rem;
+      letter-spacing: -0.5px;
     }
 
     .tagline {
-      font-weight: 500;
-      color: #6b3e2c;
-      background: rgba(255, 240, 230, 0.8);
+      font-size: 0.8rem;
+      color: #b85c34;
+      background: #fff0e6;
       display: inline-block;
-      padding: 0.3rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      backdrop-filter: blur(2px);
+      padding: 0.25rem 1rem;
+      border-radius: 60px;
       margin-top: 0.5rem;
     }
 
-    /* menu grid — aesthetic cards */
+    /* menu grid */
     .menu-grid {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
+      gap: 1.2rem;
+      margin-top: 1rem;
     }
 
     .menu-card {
-      background: #fffef7;
-      border-radius: 36px;
-      overflow: hidden;
-      transition: all 0.25s ease;
-      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.15);
+      background: white;
+      border-radius: 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.9rem 1.5rem 0.9rem 1.2rem;
-      border: 1px solid #ffe2d4;
-      backdrop-filter: blur(2px);
-      cursor: pointer;
+      padding: 0.8rem 1.2rem;
+      transition: all 0.2s ease;
+      border: 1px solid #ffe0d0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
 
     .menu-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 24px 32px -14px rgba(194, 73, 45, 0.25);
-      border-color: #ffc8b5;
-      background: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 18px 28px -12px rgba(194, 59, 18, 0.2);
+      border-color: #ffc2a1;
     }
 
     .menu-info {
       display: flex;
       align-items: center;
-      gap: 1.2rem;
+      gap: 1rem;
     }
 
     .menu-icon {
-      background: #f8ede7;
-      width: 58px;
-      height: 58px;
-      border-radius: 32px;
+      width: 60px;
+      height: 60px;
+      background: #fff2ea;
+      border-radius: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.9rem;
-      transition: 0.2s;
-    }
-
-    .menu-card:hover .menu-icon {
-      background: #c2492d10;
-      transform: scale(0.98);
     }
 
     .menu-text h3 {
-      font-size: 1.65rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      letter-spacing: -0.3px;
-      color: #2c1a12;
-      margin-bottom: 0.2rem;
+      color: #2c1a10;
     }
 
-    .flavor-note {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: #b37b62;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .flavor-note i {
+    .menu-text p {
       font-size: 0.7rem;
+      color: #c26a42;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .price-order {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
 
     .price {
-      background: #2c1a12;
-      padding: 0.5rem 1.1rem;
-      border-radius: 100px;
-      font-weight: 700;
-      font-size: 1.35rem;
-      color: #fff1e6;
-      letter-spacing: -0.2px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 5px 10px rgba(0,0,0,0.05);
-      transition: 0.15s;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #2c1a10;
+      background: #f7ede5;
+      padding: 0.3rem 0.9rem;
+      border-radius: 40px;
     }
 
-    .menu-card:hover .price {
-      background: #c2492d;
-      transform: scale(1.02);
-    }
-
-    /* special order highlight */
-    .special-badge {
-      background: #ffeedd;
-      border-radius: 28px;
-      padding: 1rem 1.5rem;
-      margin-top: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      border-left: 6px solid #c2492d;
-    }
-
-    .special-text {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .special-text i {
-      font-size: 1.8rem;
-      color: #c2492d;
-    }
-
-    .special-text p {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #3f261b;
-    }
-
-    .order-btn {
-      background: #c2492d;
+    .btn-order {
+      background: #e25822;
       border: none;
-      padding: 0.6rem 1.3rem;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 0.85rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.8rem;
       color: white;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      transition: 0.2s;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      gap: 6px;
       cursor: pointer;
+      transition: 0.15s;
       font-family: 'Inter', sans-serif;
     }
 
-    .order-btn:hover {
-      background: #a23b21;
+    .btn-order:hover {
+      background: #bc431b;
       transform: scale(0.97);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    /* footer aesthetic */
-    .footer-note {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.75rem;
-      color: #b78167;
-      border-top: 1px dashed #eccbbd;
-      padding-top: 1.5rem;
+    /* cart styling */
+    .cart-header {
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px dashed #ffd5be;
+      padding-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
 
-    .footer-note span i {
-      margin-right: 6px;
+    .cart-header i {
+      font-size: 1.8rem;
+      color: #e25822;
     }
 
-    /* floating order toast */
-    .toast-msg {
-      position: fixed;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      background: #2c1a12ee;
-      backdrop-filter: blur(12px);
-      color: #fce6db;
-      padding: 0.7rem 1.5rem;
-      border-radius: 60px;
+    .cart-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2c1a10;
+    }
+
+    .cart-list {
+      list-style: none;
+      margin-bottom: 1rem;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    .cart-list li {
+      background: #fffaf5;
+      margin: 0.5rem 0;
+      padding: 0.7rem 1rem;
+      border-radius: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-weight: 500;
       font-size: 0.9rem;
-      letter-spacing: 0.3px;
-      z-index: 200;
-      opacity: 0;
-      transition: opacity 0.2s, transform 0.2s;
-      pointer-events: none;
-      white-space: nowrap;
-      font-family: monospace;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      border: 1px solid #ffe2d4;
     }
 
-    .toast-msg.show {
-      opacity: 1;
-      transform: translateX(-50%) scale(1);
+    .cart-item-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    @media (max-width: 500px) {
-      body {
-        padding: 1.2rem;
-      }
-      .menu-card {
-        padding: 0.7rem 1rem;
-      }
-      .menu-text h3 {
-        font-size: 1.35rem;
-      }
-      .price {
-        font-size: 1.1rem;
-        padding: 0.4rem 0.9rem;
-      }
-      .menu-icon {
-        width: 48px;
-        height: 48px;
-        font-size: 1.5rem;
-      }
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-    }
-
-    /* button-like feel for cards */
-    button {
+    .remove-item {
       background: none;
       border: none;
+      color: #d94a1a;
       cursor: pointer;
+      font-size: 1rem;
+      padding: 0 6px;
+      transition: 0.1s;
+    }
+
+    .remove-item:hover {
+      transform: scale(1.1);
+      color: #a8320a;
+    }
+
+    .total-price {
+      background: #2c1a10;
+      color: #ffefdf;
+      padding: 0.9rem;
+      border-radius: 60px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      margin: 1rem 0;
+    }
+
+    .btn-wa {
+      background: #25D366;
+      width: 100%;
+      border: none;
+      padding: 1rem;
+      border-radius: 60px;
+      font-weight: 800;
+      font-size: 1rem;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      margin-top: 0.5rem;
+    }
+
+    .btn-wa:hover {
+      background: #1da15a;
+      transform: scale(0.98);
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: #bb8264;
+      padding: 2rem 0;
+      font-weight: 500;
+    }
+
+    .reset-btn {
+      background: transparent;
+      border: 1px solid #ffc6ac;
+      padding: 0.5rem;
+      border-radius: 40px;
+      width: 100%;
+      margin-top: 0.8rem;
+      font-weight: 600;
+      color: #b85c34;
+      cursor: pointer;
+      transition: 0.1s;
+    }
+
+    .reset-btn:hover {
+      background: #ffefe5;
+    }
+
+    @media (max-width: 780px) {
+      .container {
+        flex-direction: column;
+      }
+      .cart-section {
+        position: static;
+      }
+      body {
+        padding: 1rem;
+      }
+      .menu-text h3 {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
+
 <div class="container">
-  <!-- Hero aesthetic header -->
-  <div class="hero">
-    <div class="badge-icon">
-      <i class="fas fa-fire"></i>
+  <!-- MENU SECTION (WIRSTICK original menu: BALADO, KEJU, BBQ) -->
+  <div class="menu-section">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fas fa-grill-hot"></i>
+      </div>
+      <h1>WIRSTICK</h1>
+      <div class="tagline">
+        <i class="fas fa-fire"></i> sosis bakar premium • pedas, cheese, smoky
+      </div>
     </div>
-    <h1>WIRSTICK</h1>
-    <div class="tagline">
-      <i class="fas fa-map-marker-alt"></i>  sausage street • premium sticks
-    </div>
-    <div style="margin-top: 1rem; font-size: 0.8rem; font-weight: 500; opacity: 0.8;">
-      <i class="fas fa-pepper-hot"></i>  spicy level up  |  <i class="fas fa-grill-hot"></i>  fresh grilled
-    </div>
-  </div>
 
-  <!-- MENU CARDS (3 variants + modern details) -->
-  <div class="menu-grid">
-    <!-- Balado -->
-    <div class="menu-card" data-name="WIRSTICK BALADO" data-price="15000">
-      <div class="menu-info">
-        <div class="menu-icon">
-          <i class="fas fa-pepper"></i>
-        </div>
-        <div class="menu-text">
-          <h3>WIRSTICK BALADO</h3>
-          <div class="flavor-note">
-            <i class="fas fa-chili"></i> spicy balado glaze
-            <span style="margin-left: 6px;">🔥🔥</span>
+    <div class="menu-grid">
+      <!-- WIRSTICK BALADO -->
+      <div class="menu-card" data-nama="WIRSTICK BALADO" data-harga="15000">
+        <div class="menu-info">
+          <div class="menu-icon">
+            <i class="fas fa-pepper-hot"></i>
+          </div>
+          <div class="menu-text">
+            <h3>WIRSTICK BALADO</h3>
+            <p><i class="fas fa-chili"></i> spicy balado glaze + sosis juicy</p>
           </div>
         </div>
-      </div>
-      <div class="price">Rp15k</div>
-    </div>
-
-    <!-- Keju -->
-    <div class="menu-card" data-name="WIRSTICK KEJU" data-price="15000">
-      <div class="menu-info">
-        <div class="menu-icon">
-          <i class="fas fa-cheese"></i>
+        <div class="price-order">
+          <span class="price">Rp15k</span>
+          <button class="btn-order"><i class="fas fa-plus-circle"></i> Pesan</button>
         </div>
-        <div class="menu-text">
-          <h3>WIRSTICK KEJU</h3>
-          <div class="flavor-note">
-            <i class="fas fa-melt"></i> melted cheddar + mozzarella
+      </div>
+
+      <!-- WIRSTICK KEJU -->
+      <div class="menu-card" data-nama="WIRSTICK KEJU" data-harga="15000">
+        <div class="menu-info">
+          <div class="menu-icon">
+            <i class="fas fa-cheese"></i>
+          </div>
+          <div class="menu-text">
+            <h3>WIRSTICK KEJU</h3>
+            <p><i class="fas fa-melt"></i> melted cheddar + mozzarella</p>
           </div>
         </div>
-      </div>
-      <div class="price">Rp15k</div>
-    </div>
-
-    <!-- BBQ -->
-    <div class="menu-card" data-name="WIRSTICK BBQ" data-price="15000">
-      <div class="menu-info">
-        <div class="menu-icon">
-          <i class="fas fa-drumstick-bite"></i>
+        <div class="price-order">
+          <span class="price">Rp15k</span>
+          <button class="btn-order"><i class="fas fa-plus-circle"></i> Pesan</button>
         </div>
-        <div class="menu-text">
-          <h3>WIRSTICK BBQ</h3>
-          <div class="flavor-note">
-            <i class="fas fa-smog"></i> smoky BBQ sauce & caramelized
+      </div>
+
+      <!-- WIRSTICK BBQ -->
+      <div class="menu-card" data-nama="WIRSTICK BBQ" data-harga="15000">
+        <div class="menu-info">
+          <div class="menu-icon">
+            <i class="fas fa-drumstick-bite"></i>
+          </div>
+          <div class="menu-text">
+            <h3>WIRSTICK BBQ</h3>
+            <p><i class="fas fa-smog"></i> smoky BBQ sauce & caramelized</p>
           </div>
         </div>
+        <div class="price-order">
+          <span class="price">Rp15k</span>
+          <button class="btn-order"><i class="fas fa-plus-circle"></i> Pesan</button>
+        </div>
       </div>
-      <div class="price">Rp15k</div>
+    </div>
+
+    <!-- little info promo -->
+    <div style="margin-top: 1.8rem; text-align: center; font-size: 0.7rem; background:#fff1e8; border-radius: 30px; padding: 0.6rem;">
+      <i class="fas fa-gift"></i> Beli 3 dapat free saus spesial + stiker WIRSTICK!
     </div>
   </div>
 
-  <!-- special combo / promotion area (makes it more lively) -->
-  <div class="special-badge">
-    <div class="special-text">
-      <i class="fas fa-gem"></i>
-      <p><strong>✨ Beli 3 dapat free sauce spesial ✨</strong><br>Mix & match varian favoritmu!</p>
+  <!-- CART SECTION (keranjang & total) -->
+  <div class="cart-section">
+    <div class="cart-header">
+      <i class="fas fa-shopping-basket"></i>
+      <h2>🛒 Pesanan Kamu</h2>
     </div>
-    <button class="order-btn" id="comboOrderBtn"><i class="fab fa-whatsapp"></i> Pesan Combo</button>
-  </div>
 
-  <!-- add-on info: delivery / social proof -->
-  <div class="footer-note">
-    <span><i class="fas fa-motorcycle"></i> Fast delivery 15-25 min</span>
-    <span><i class="fas fa-map-pin"></i> Jl. kuliner no 21</span>
-    <span><i class="fas fa-credit-card"></i> Cashless & QR</span>
-  </div>
-</div>
+    <ul id="cartList" class="cart-list">
+      <li class="empty-cart"><i class="fas fa-utensils"></i> Belum ada pesanan</li>
+    </ul>
 
-<!-- toast notif -->
-<div id="orderToast" class="toast-msg">
-  🍢 ditambahkan ke keranjang!
+    <div id="totalContainer" class="total-price">Total: Rp 0</div>
+
+    <button id="waButton" class="btn-wa">
+      <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+    </button>
+    <button id="resetButton" class="reset-btn">
+      <i class="fas fa-trash-alt"></i> Kosongkan Keranjang
+    </button>
+  </div>
 </div>
 
 <script>
-  // Interactive & aesthetic: show toast when clicking any menu card,
-  // plus simulate "order" action for better jualan feel (direct to whatsapp with pre-filled message)
-  // all without losing original purpose: selling sticks!
-  
-  const toastEl = document.getElementById('orderToast');
-  
-  function showToast(message) {
-    toastEl.textContent = message || '🍢 ditambahkan ke keranjang!';
-    toastEl.classList.add('show');
-    setTimeout(() => {
-      toastEl.classList.remove('show');
-    }, 1800);
-  }
-  
-  // Helper: send to WhatsApp (business style) with dynamic product name
-  function sendWhatsAppOrder(productName, isCombo = false, quantity = 1) {
-    let message = '';
-    if (isCombo) {
-      message = `Halo kak! Saya mau order SPECIAL COMBO WIRSTICK ✨\n3 varian (Balado, Keju, BBQ) - Rp45.000\nBisa ditambahkan request saus ya.`;
-    } else {
-      message = `Halo! Saya mau order ${productName} (1 porsi) - Rp15.000\nVia menu WIRSTICK aesthetic. Siap antar/dine in?`;
-    }
-    // encode untuk whatsapp (nomor contoh: bisa diganti dengan nomor asli penjual)
-    // biar profesional, saya pakai placeholder nomor tapi user bisa ganti, tapi tetap fungsional
-    // lebih baik menggunakan nomor interaktif: kita bisa set number kosong biar user klik link whatsapp lalu isi manual? lebih friendly: gunakan nomor contoh (bisa diganti penjual)
-    // Saya akan menggunakan nomor '6281234567890' sebagai contoh, tapi penjual dapat mengganti di variable. 
-    // Untuk keperluan demo tetap menunjukkan interaksi jualan yang keren.
-    const phoneNumber = '6281234567890'; // ganti dengan nomor asli penjual (contoh)
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
+  // Data pesanan array of objects { nama, harga }
+  let cart = [];
+
+  // DOM elements
+  const cartListEl = document.getElementById('cartList');
+  const totalContainer = document.getElementById('totalContainer');
+  const waButton = document.getElementById('waButton');
+  const resetButton = document.getElementById('resetButton');
+
+  // Helper: format Rupiah (tanpa desimal)
+  function formatRupiah(angka) {
+    return 'Rp ' + angka.toLocaleString('id-ID');
   }
 
-  // Card click event: each menu card triggers WhatsApp order (simulate pesan)
-  const menuCards = document.querySelectorAll('.menu-card');
-  menuCards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      // jangan sampai bubbling mengganggu, tapi fine
-      const productName = card.getAttribute('data-name');
-      if (productName) {
-        showToast(`🛒 ${productName} | siap dipesan!`);
-        // slight delay before wa redirect for better UX (toast dulu)
-        setTimeout(() => {
-          sendWhatsAppOrder(productName, false, 1);
-        }, 300);
+  // Render ulang keranjang dan total
+  function renderCart() {
+    cartListEl.innerHTML = '';
+    if (cart.length === 0) {
+      cartListEl.innerHTML = '<li class="empty-cart"><i class="fas fa-utensils"></i> Belum ada pesanan</li>';
+      totalContainer.innerText = 'Total: Rp 0';
+      return;
+    }
+
+    let total = 0;
+    cart.forEach((item, index) => {
+      total += item.harga;
+      const li = document.createElement('li');
+      li.className = 'cart-item';
+      li.innerHTML = `
+        <div class="cart-item-name">
+          <i class="fas fa-hotdog"></i>
+          <span>${item.nama}</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-weight:700;">${formatRupiah(item.harga)}</span>
+          <button class="remove-item" data-index="${index}"><i class="fas fa-times-circle"></i></button>
+        </div>
+      `;
+      cartListEl.appendChild(li);
+    });
+
+    totalContainer.innerText = `Total: ${formatRupiah(total)}`;
+
+    // attach event ke tombol hapus (masing-masing)
+    document.querySelectorAll('.remove-item').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = parseInt(btn.getAttribute('data-index'));
+        if (!isNaN(idx)) {
+          cart.splice(idx, 1);
+          renderCart();
+        }
+        e.stopPropagation();
+      });
+    });
+  }
+
+  // fungsi pesan (tambah ke keranjang)
+  function tambahPesanan(nama, harga) {
+    cart.push({ nama: nama, harga: harga });
+    renderCart();
+
+    // animasi kecil: efek notifikasi singkat (opsional)
+    const toast = document.createElement('div');
+    toast.innerText = `🍢 ${nama} ditambahkan!`;
+    toast.style.position = 'fixed';
+    toast.style.bottom = '20px';
+    toast.style.left = '50%';
+    toast.style.transform = 'translateX(-50%)';
+    toast.style.backgroundColor = '#2c1a10';
+    toast.style.color = '#ffefdf';
+    toast.style.padding = '0.6rem 1.2rem';
+    toast.style.borderRadius = '60px';
+    toast.style.fontWeight = '600';
+    toast.style.fontSize = '0.85rem';
+    toast.style.zIndex = '999';
+    toast.style.boxShadow = '0 8px 18px rgba(0,0,0,0.2)';
+    toast.style.backdropFilter = 'blur(8px)';
+    toast.style.fontFamily = "'Inter', sans-serif";
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.remove();
+    }, 1500);
+  }
+
+  // event listener untuk semua tombol "Pesan" di menu card
+  const orderBtns = document.querySelectorAll('.btn-order');
+  orderBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const card = btn.closest('.menu-card');
+      if (card) {
+        const nama = card.getAttribute('data-nama');
+        const harga = parseInt(card.getAttribute('data-harga'));
+        if (nama && !isNaN(harga)) {
+          tambahPesanan(nama, harga);
+        }
       }
+      e.stopPropagation();
     });
   });
-  
-  // Combo button special (beli 3)
-  const comboBtn = document.getElementById('comboOrderBtn');
-  if (comboBtn) {
-    comboBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      showToast('🎉 COMBO 3 STICK (hemat ongkir) 🎉');
-      setTimeout(() => {
-        sendWhatsAppOrder('COMBO 3 varian', true, 3);
-      }, 280);
-    });
-  }
-  
-  // additional micro-interaction: add ripple effect on hover? not needed but cool
-  // Plus: menampilkan sentuhan modern dengan floating shadow
-  console.log('✨ Menu WIRSTICK — jualan makin estetik!');
-  
-  // Optional: agar user lebih yakin kita bisa menambahkan counter kunjungan atau efek stiker
-  // Buat info bahwa ini toko sungguhan (harga sudah update)
-  // menyematkan dynamic tahun
-  const yearSpan = document.createElement('div');
-  yearSpan.style.textAlign = 'center';
-  yearSpan.style.fontSize = '0.7rem';
-  yearSpan.style.marginTop = '0.8rem';
-  yearSpan.style.opacity = '0.6';
-  yearSpan.style.color = '#a36a4f';
-  yearSpan.innerHTML = `<i class="far fa-heart"></i> WIRSTICK • homemade sausages • harga promo tetap Rp15k`;
-  document.querySelector('.container').appendChild(yearSpan);
-</script>
 
-<!-- tambahan sedikit styling untuk tombol combo lebih menarik -->
-<style>
-  #comboOrderBtn {
-    background: #e67e3a;
-    transition: all 0.2s;
-    font-weight: 700;
-    letter-spacing: -0.2px;
+  // Fungsi kirim WA (sesuai template modern dengan detail pesanan)
+  function kirimWhatsApp() {
+    if (cart.length === 0) {
+      alert('⚠️ Belum ada pesanan! Pilih menu WIRSTICK dulu ya 🍢');
+      return;
+    }
+
+    // nomor WhatsApp penjual (bisa diganti dengan nomor asli)
+    // GANTI NOMOR DI BAWAH INI DENGAN NOMOR WHATSAPP ASLI PENJUAL WIRSTICK
+    let nomorToko = "6282194189613"; // <=== GANTI DENGAN NOMOR AKTIF KAMU
+    
+    let totalHarga = 0;
+    cart.forEach(item => { totalHarga += item.harga; });
+    
+    // menyusun teks dengan rapi
+    let text = "🍢 *PESANAN WIRSTICK* 🍢%0A";
+    text += "Halo kak, saya mau pesan:%0A%0A";
+    
+    cart.forEach((item, i) => {
+      text += (i+1) + ". " + item.nama + " - Rp " + item.harga.toLocaleString('id-ID') + "%0A";
+    });
+    
+    text += "%0A📋 *Total: Rp " + totalHarga.toLocaleString('id-ID') + "*%0A%0A";
+    text += "🙏 siap antar / ambil di tempat. Terima kasih!%0A";
+    text += "— dari menu digital WIRSTICK";
+    
+    const url = "https://wa.me/" + nomorToko + "?text=" + text;
+    window.open(url, "_blank");
   }
-  #comboOrderBtn:hover {
-    background: #bf542d;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  }
-  .special-badge {
-    background: linear-gradient(115deg, #fff4ed, #fffbf7);
-  }
-  .price {
-    font-family: 'Inter', monospace;
-    font-weight: 800;
-  }
-  .menu-card {
-    transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.2s;
-  }
-  ::selection {
-    background: #c2492d;
-    color: white;
-  }
-</style>
+
+  // tombol WA
+  waButton.addEventListener('click', kirimWhatsApp);
+
+  // reset / kosongkan keranjang
+  resetButton.addEventListener('click', () => {
+    if (cart.length > 0) {
+      cart = [];
+      renderCart();
+      // notifikasi reset
+      const notif = document.createElement('div');
+      notif.innerText = '🗑️ Keranjang dikosongkan';
+      notif.style.position = 'fixed';
+      notif.style.bottom = '20px';
+      notif.style.left = '50%';
+      notif.style.transform = 'translateX(-50%)';
+      notif.style.backgroundColor = '#1e1a17';
+      notif.style.color = '#ffdcc9';
+      notif.style.padding = '0.5rem 1.2rem';
+      notif.style.borderRadius = '60px';
+      notif.style.fontSize = '0.8rem';
+      notif.style.zIndex = '999';
+      document.body.appendChild(notif);
+      setTimeout(() => notif.remove(), 1200);
+    } else {
+      alert('Keranjang masih kosong nih, pilih menu dulu yuk!');
+    }
+  });
+
+  // Initial render (cart kosong)
+  renderCart();
+</script>
 </body>
 </html>
