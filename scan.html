@@ -1,34 +1,390 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Scan Barcode</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://unpkg.com/html5-qrcode"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>WIRSTICK · Scan QR untuk Pesan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fff8f0 0%, #ffefe3 100%);
+            min-height: 100vh;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        body::before {
+            content: "🥨";
+            font-size: 180px;
+            position: fixed;
+            bottom: -30px;
+            left: -40px;
+            opacity: 0.05;
+            pointer-events: none;
+            transform: rotate(-15deg);
+        }
+
+        body::after {
+            content: "🍟";
+            font-size: 150px;
+            position: fixed;
+            top: -20px;
+            right: -30px;
+            opacity: 0.06;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* QR Section */
+        .qr-section {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 48px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 200, 170, 0.6);
+        }
+
+        .logo {
+            background: #e25822;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            box-shadow: 0 12px 20px -8px rgba(226, 88, 34, 0.4);
+        }
+
+        .logo i {
+            font-size: 2.8rem;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #c23b12, #e87a3e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .qr-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 32px;
+            display: inline-block;
+            margin: 1.5rem 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        #qrcode {
+            display: flex;
+            justify-content: center;
+        }
+
+        #qrcode img {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+        }
+
+        .qr-url {
+            background: #fff0e6;
+            padding: 10px 16px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            word-break: break-all;
+            color: #c23b12;
+            margin: 1rem 0;
+        }
+
+        .btn-copy {
+            background: #e25822;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Quicksand', sans-serif;
+            margin-top: 0.5rem;
+        }
+
+        .btn-copy:hover {
+            background: #bc431b;
+        }
+
+        /* Info Section */
+        .info-section {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 48px;
+            padding: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 200, 170, 0.6);
+        }
+
+        .info-section h2 {
+            color: #2c1a10;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid #e25822;
+            padding-left: 15px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            padding: 12px;
+            background: #fffaf5;
+            border-radius: 28px;
+            transition: 0.2s;
+        }
+
+        .step:hover {
+            transform: translateX(5px);
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #e25822;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .step-text {
+            flex: 1;
+        }
+
+        .step-text strong {
+            color: #2c1a10;
+            display: block;
+        }
+
+        .step-text p {
+            color: #b85c34;
+            font-size: 0.8rem;
+        }
+
+        .menu-preview {
+            margin-top: 1.5rem;
+            background: #fff5ef;
+            border-radius: 28px;
+            padding: 1rem;
+        }
+
+        .menu-preview h3 {
+            color: #c23b12;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .preview-items {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .preview-item {
+            background: white;
+            padding: 6px 12px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #2c1a10;
+            border: 1px solid #ffe0d0;
+        }
+
+        .btn-menu {
+            background: linear-gradient(135deg, #e25822, #c23b12);
+            color: white;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: 'Quicksand', sans-serif;
+            text-decoration: none;
+        }
+
+        .btn-menu:hover {
+            background: linear-gradient(135deg, #bc431b, #a03512);
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+            .container {
+                flex-direction: column;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            color: #b85c34;
+        }
+    </style>
 </head>
+<body>
 
-<body style="text-align:center; font-family:Arial;">
+<div class="container">
+    <!-- QR CODE SECTION -->
+    <div class="qr-section">
+        <div class="logo">
+            <i class="fas fa-utensils"></i>
+        </div>
+        <h1>WIRSTICK</h1>
+        <p style="color: #b85c34; margin-bottom: 1rem;">Scan QR untuk pesan langsung</p>
 
-<h2>📷 Scan Barcode</h2>
-<p>Arahkan kamera ke barcode</p>
+        <div class="qr-container">
+            <div id="qrcode"></div>
+        </div>
 
-<div id="reader" style="width:300px; margin:auto;"></div>
+        <div class="qr-url">
+            <i class="fas fa-link"></i> gibranhayder.github.io/WIRSTICK/
+        </div>
 
-<p id="hasil"></p>
+        <button class="btn-copy" id="copyBtn">
+            <i class="fas fa-copy"></i> Salin Link
+        </button>
+
+        <p style="font-size: 0.7rem; margin-top: 1rem; color: #bb8264;">
+            <i class="fas fa-camera"></i> Scan pakai kamera HP / WhatsApp
+        </p>
+    </div>
+
+    <!-- INFO SECTION -->
+    <div class="info-section">
+        <h2>
+            <i class="fas fa-info-circle"></i> 
+            Cara Pesan
+        </h2>
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-text">
+                <strong>Scan QR Code</strong>
+                <p>Gunakan kamera HP atau WhatsApp Web</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-text">
+                <strong>Pilih Menu</strong>
+                <p>WIRSTICK BALADO, KEJU, atau BBQ</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-text">
+                <strong>Isi Data & Checkout</strong>
+                <p>Nama, alamat, lalu kirim via WhatsApp</p>
+            </div>
+        </div>
+
+        <div class="menu-preview">
+            <h3><i class="fas fa-cookie-bite"></i> Menu Tersedia</h3>
+            <div class="preview-items">
+                <span class="preview-item">🌶️ WIRSTICK BALADO</span>
+                <span class="preview-item">🧀 WIRSTICK KEJU</span>
+                <span class="preview-item">🔥 WIRSTICK BBQ</span>
+            </div>
+        </div>
+
+        <a href="https://gibranhayder.github.io/WIRSTICK/" class="btn-menu" target="_blank">
+            <i class="fas fa-arrow-right"></i> Buka Menu Langsung
+        </a>
+    </div>
+</div>
+
+<footer>
+    <i class="fas fa-store"></i> WIRSTICK · Crunchy Stick Snack
+</footer>
 
 <script>
-function onScanSuccess(decodedText) {
-  document.getElementById("hasil").innerText = "Hasil: " + decodedText;
+    // URL menu Anda
+    const menuURL = "https://gibranhayder.github.io/WIRSTICK/";
+    
+    // Generate QR Code
+    new QRCode(document.getElementById("qrcode"), {
+        text: menuURL,
+        width: 200,
+        height: 200,
+        colorDark: "#2c1a10",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
 
-  // contoh: kirim ke menu + bawa data barcode
-  window.location.href = "index.html?kode=" + decodedText;
-}
-
-let scanner = new Html5QrcodeScanner(
-  "reader",
-  { fps: 10, qrbox: 250 }
-);
-
-scanner.render(onScanSuccess);
+    // Tombol copy link
+    const copyBtn = document.getElementById("copyBtn");
+    copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(menuURL).then(() => {
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fas fa-check"></i> Link Tersalin!';
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+            }, 2000);
+        });
+    });
 </script>
 
 </body>
