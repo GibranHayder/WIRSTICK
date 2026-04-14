@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scan Barcode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+
+<body style="text-align:center; font-family:Arial;">
+
+<h2>📷 Scan Barcode</h2>
+<p>Arahkan kamera ke barcode</p>
+
+<div id="reader" style="width:300px; margin:auto;"></div>
+
+<p id="hasil"></p>
+
+<script>
+function onScanSuccess(decodedText) {
+  document.getElementById("hasil").innerText = "Hasil: " + decodedText;
+
+  // contoh: kirim ke menu + bawa data barcode
+  window.location.href = "index.html?kode=" + decodedText;
+}
+
+let scanner = new Html5QrcodeScanner(
+  "reader",
+  { fps: 10, qrbox: 250 }
+);
+
+scanner.render(onScanSuccess);
+</script>
+
+</body>
+</html>
