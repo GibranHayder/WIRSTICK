@@ -1,0 +1,2 @@
+# WIRSTICK
+menu wirstick
